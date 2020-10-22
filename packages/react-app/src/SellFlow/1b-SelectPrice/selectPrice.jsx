@@ -38,7 +38,7 @@ function SelectPrice(props) {
 
                 <div className={classes.btnBar}>
                     <button  onClick={()=> previous()}  className={classes.btnLeft}  >Back</button>
-                    <button onClick={()=> next()} className={classes.btnRight}  >Mint</button>
+                    <button onClick={()=> next()} className={classes.btnRight}  >Next</button>
                 </div>
             </div>
     )

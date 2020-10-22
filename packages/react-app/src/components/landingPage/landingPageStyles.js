@@ -28,13 +28,13 @@ const styles = createStyles({
     stepsContainer: {
         marginTop: "50px",
         marginBottom: "50px",
-        width: "70%",
+        width: "50%",
         height: "150px",
         minWidth: "750px",
         display: "flex"
     },
     stepBox: {
-        width: "16%",
+        width: "20%",
         height: "100%",
         display: "flex",
         flexDirection: "column",
@@ -59,7 +59,7 @@ const styles = createStyles({
         backgroundColor: "var(--main-grey)"
     },
     btnRight : {
-        margin: "auto 50px auto auto",
+        margin: "auto",
         padding: "10px 20px",
         borderRadius: "5px",
         fontFamily: "var(--button-font)",
