@@ -6,7 +6,7 @@ import styles from "./reviewStyles";
  function Review(props) {
      const {classes, navigation} = props;
      const {state, actions} = useContext(Store);
-     const { nftDetails, curveShape, riskProfile} = state;
+     const { nftDetails, shareDetails, curveShape, riskProfile} = state;
      const {previous, next} = navigation;
      const handleNext = ()=> {
         actions.createMarket(state);
@@ -36,10 +36,10 @@ import styles from "./reviewStyles";
                     <div className={classes.rightItem}>100</div>
                     <div className={classes.rightItem}>USDC</div>
                     <div className={classes.rightItem}>{curveShape}</div>
-                    <div className={classes.rightItem}>SHARE-00</div>
-                    <div className={classes.rightItem}>ERC20 Symbol: </div>
+                    <div className={classes.rightItem}>{shareDetails.name}</div>
+                    <div className={classes.rightItem}>{shareDetails.name}</div>
                     <div className={classes.rightItem}>⎕ ⎕ ⎕ ⎕ </div>
-    <div className={classes.rightItem}>Aave {}</div>
+                    <div className={classes.rightItem}>{riskProfile}</div>
                 </div>
             </div>
             <div className={classes.btnBar}>
