@@ -18,7 +18,15 @@ function CreateNFT(props) {
         e.preventDefault();
         next();
     }
-    
+    // const formatTokenDetails = (nftName)=> {
+    //     const tokenName = `${nftName.toUpperCase()}SHARE-01`;
+    //     const tokenSymbol = tokenName.slice(0, 4);
+    // }
+    const handleNameChange =(e)=> {
+        actions.setNFTName(e.target.value)
+        actions.setTokenName(e.target.value)
+        actions.setTokenSymbol(e.target.value)
+    }
     const {name, symbol, url} = state.nftDetails;
 
     return (
@@ -31,7 +39,7 @@ function CreateNFT(props) {
             <form className={classes.form}>
 
                 <label className={classes.label}  for="name">Name for NFT</label>
-                <input onChange={(e)=> actions.setNFTName(e.target.value)} value={name} className={classes.input} type="text" name="name" placeholder="example: MyCoolNFT"/>
+                <input onChange={handleNameChange} value={name} className={classes.input} type="text" name="name" placeholder="example: MyCoolNFT"/>
 
                 <label className={classes.label} for="symbol">Symbol for NFT</label>
                 <input onChange={(e)=> actions.setNFTSymbol(e.target.value)} value={symbol} className={classes.input} type="text" name="symbol" placeholder="MYCT"/>

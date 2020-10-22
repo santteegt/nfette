@@ -10,6 +10,12 @@ export const useActions = (state, dispatch)=> ({
     setNFTUrl: (data)=> {
         dispatch({type: types.createNFT.SET_URL, payload: data})
     },
+    setTokenName: (data)=> {
+        dispatch({type: types.token.SET_NAME, payload: data})
+    },
+    setTokenSymbol: (data)=> {
+        dispatch({type: types.token.SET_SYMBOL, payload: data})
+    },
     setCollateralType: (data)=> {
         dispatch({type: types.collateralAndPrice.SET_COLLATERAL, payload: data })
     },
