@@ -1,0 +1,11 @@
+.App {
+  text-align: center;
+  background-color: var(--main-white);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  color: white;
+  overflow: hidden;
+}
