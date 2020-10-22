@@ -21,6 +21,13 @@ export const useActions = (state, dispatch)=> ({
     },
     setRiskProfile: (data)=> {
         dispatch({type: types.riskProfile.SET_RISK, payload: data})
+    },
+    setProvider: (data)=> {
+        dispatch({type: types.provider.SET_PROVIDER, payload: data})
+    },
+    createMarket: (data)=> {
+        dispatch({type: types.createMarket.CREATE_MARKET_PENDING})
+        dispatch({type: types.createMarket.CREATE_MARKET_REQUEST, payload: data})
     }
 
 })

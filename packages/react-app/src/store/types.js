@@ -14,6 +14,14 @@ const types = {
     riskProfile: {
         SET_RISK: "RISK_PROFILE_SET_RISK"
     },
+    provider: {
+        SET_PROVIDER: "SET_PROVIDER"
+    },
+    createMarket: {
+        CREATE_MARKET_SUCCESS: "CREATE_MARKET_SUCCESS",
+        CREATE_MARKET_FAIL: "CREATE_MARKET_FAIL",
+        CREATE_MARKET_REQUEST: "CREATE_MARKET_REQUEST"
+    }
 }
 
 export default types;
