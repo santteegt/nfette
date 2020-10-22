@@ -30,11 +30,7 @@ function LandingPage(props) {
                     <p className={classes.text}>{"Sell $SHAREs to your shareholders"}</p>
                     <span className="gradientBorder"></span>
                 </div>
-                <div className={classes.stepBox}>
-                    <span className={classes.text}>5.</span>
-                    <p className={classes.text}>{"Cash out, close market and share $YIELDs"}</p>
-                    <span className="gradientBorder"></span>
-                </div>
+                
             </div>
             <div className={classes.btnBar}>
                 <button onClick={()=>go("createNFT")} className={classes.btnRight}>Don't have an NFT?</button>

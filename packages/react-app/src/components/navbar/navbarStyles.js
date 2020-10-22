@@ -18,12 +18,15 @@ const styles = createStyles({
     },
     headingContainer: {
         width: "150px",
-        height: "50px",
-        backgroundColor: "var(--main-black)",
-        display: "flex",
-        alignItems: "end",
-        justifyContent: "space-around",
+        height: "100%",
         margin: "auto",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center"
+    },
+    nfetteLogo: {
+        width: "100%",
+        margin: "auto"
     },
     heading: {
         color: "var(--main-white)",
@@ -31,7 +34,7 @@ const styles = createStyles({
         fontSize: "4.5rem",
         fontFamily: "var(--plain-font)",
         margin: "auto 1px auto auto",
-        fontWeight: "400"
+        fontWeight: "600"
     },
     headingSmall: {
         color: "var(--main-white)",
