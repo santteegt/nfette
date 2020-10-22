@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, { useContext} from 'react';
 import {Store} from "../../store/store";
 import {withStyles} from "@material-ui/core/styles";
 import {ReactComponent as AaveText} from "../../Media/aave1.svg";
@@ -10,19 +10,7 @@ import styles from "./setupLPStyles";
      const {previous, next} = navigation;
      const {state, actions} = useContext(Store);
      const {nftDetails, curveShape} = state;
-     const [option, setOption] = useState("");
 
-     const handleOptionChange = (e)=> {
-        setOption(e.target.value);
-     }
-     const handlePrevious = ()=> {
-        actions.clearRiskProfile();
-        previous();
-    }
-     const handleNext = ()=> {
-         actions.setRiskProfile(option);
-         next();
-     }
     return (
         <div className={classes.root}>
             <div className={classes.modalHeadingContainer}>
@@ -46,7 +34,7 @@ import styles from "./setupLPStyles";
                 <div className={classes.liquidityPoolBoxContainer}>
                     <div className={classes.liquidityPoolBox}>
                         <h3 className={classes.riskScale}>Low Risk</h3>
-                        <input className={classes.radio} name="curveOption" value="lowRisk" checked={option === "lowRisk"} onChange={handleOptionChange} type="radio" label="Select" />
+                        <input className={classes.radio} name="curveOption" value="lowRisk" checked={state.riskProfile === "lowRisk"} onChange={(e)=> actions.setRiskProfile(e.target.value)} type="radio" label="Select" />
                         <div className={classes.percentage}>00%</div>
                         <div className={classes.iconBox}>
                             <AaveText className={classes.svg1} />
@@ -58,7 +46,7 @@ import styles from "./setupLPStyles";
                     </div>
                     <div className={classes.liquidityPoolBox}>
                         <h3 className={classes.riskScale}>Medium Risk</h3>
-                        <input className={classes.radio} name="curveOption" value="mediumRisk" checked={option === "mediumRisk"} onChange={handleOptionChange} type="radio" label="Select" />
+                        <input className={classes.radio} name="curveOption" value="mediumRisk" checked={state.riskProfile === "mediumRisk"} onChange={(e)=> actions.setRiskProfile(e.target.value)} type="radio" label="Select" />
                         <div className={classes.percentage}>00%</div>
                         <div className={classes.iconBox}>
                             <AaveText className={classes.svg1} />
@@ -70,7 +58,7 @@ import styles from "./setupLPStyles";
                     </div>
                     <div className={classes.liquidityPoolBox}>
                         <h3 className={classes.riskScale}>High Risk</h3>
-                        <input className={classes.radio} name="curveOption" value="highRisk" checked={option === "highRisk"} onChange={handleOptionChange} type="radio" label="Select" />
+                        <input className={classes.radio} name="curveOption" value="highRisk" checked={state.riskProfile === "highRisk"} onChange={(e)=> actions.setRiskProfile(e.target.value)} type="radio" label="Select" />
                         <div className={classes.percentage}>00%</div>
                         <div className={classes.iconBox}>
                             <AaveText className={classes.svg1} />
@@ -83,8 +71,8 @@ import styles from "./setupLPStyles";
                 </div>
             </div>
             <div className={classes.btnBar}>
-                <button onClick={handlePrevious}  className={`${classes.btnLeft} button`}>Back</button>
-                <button onClick={handleNext}  className={`${classes.btnRight} button`}>Next</button>
+                <button onClick={()=> previous()}  className={`${classes.btnLeft} button`}>Back</button>
+                <button onClick={()=> next()}  className={`${classes.btnRight} button`}>Next</button>
             </div>
         </div>
     )

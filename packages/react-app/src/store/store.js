@@ -5,8 +5,17 @@ import reducer from "./reducer";
 export const Store = createContext();
 
 const initialState = {
-    newNFTDetails: {},
-    nftDetails: {},
+    nftDetails: {
+        name: "",
+        symbol: "",
+        url: ""
+    },
+    shareDetails: {
+        name: "",
+        symbol: ""
+    },
+    collateralType: "",
+    initialPrice: "",
     curveShape: "",
     riskProfile: "",
 };
