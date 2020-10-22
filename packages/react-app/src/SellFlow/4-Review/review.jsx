@@ -6,8 +6,12 @@ import styles from "./reviewStyles";
  function Review(props) {
      const {classes, navigation} = props;
      const {state, actions} = useContext(Store);
-     const {newNFTDetails, nftDetails, curveShape, riskProfile} = state;
+     const { nftDetails, curveShape, riskProfile} = state;
      const {previous, next} = navigation;
+     const handleNext = ()=> {
+        actions.createMarket(state);
+        next()
+     }
     return (
         <div className={classes.root}>
             <div className={classes.modalHeadingContainer}>
@@ -40,7 +44,7 @@ import styles from "./reviewStyles";
             </div>
             <div className={classes.btnBar}>
                 <button onClick={()=> previous()}  className={`${classes.btnLeft} button`}>Back</button>
-                <button onClick={()=> next()}  className={`${classes.btnRight} button`}>Next</button>
+                <button onClick={handleNext}  className={`${classes.btnRight} button`}>Next</button>
             </div>
         </div>
     )

@@ -7,7 +7,6 @@ import Web3Modal from "web3modal";
 import Portis from "@portis/web3";
 
 // must register dapp to get portis ID
-const portisID = "";
 
 const providerOptions = {
   portis: {

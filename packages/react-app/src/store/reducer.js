@@ -17,6 +17,14 @@ const reducer = (state, action)=> {
             return {...state, curveShape: action.payload}
         case types.riskProfile.SET_RISK: 
             return {...state, riskProfile: action.payload}
+        case types.provider.SET_PROVIDER: 
+            return {...state, provider: action.payload}
+        case types.createMarket.CREATE_MARKET_PENDING:
+            return {...state, createMarketPending: true}
+        case types.createMarket.CREATE_MARKET_FAIL:
+            return {...state, createMarketPending: false, error: action.payload, createMarketSuccess: false}
+        case types.createMarket.CREATE_MARKET_SUCCESS:
+            return {...state, createMarketPending: false, nftMarketData: action.payload, createMarketSuccess: true}
         default:
             return state
     }

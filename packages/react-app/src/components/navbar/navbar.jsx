@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import {Store} from "../../store/store";
 import { ethers } from 'ethers';
 import styles from "./navbarStyles";
 import {withStyles} from "@material-ui/core/styles";
 
 function Navbar(props) {
     const [loggedIn, setLoggedIn] = useState(false);
+    const {state, actions} = useContext(Store);
     const {classes} = props;
 
     const logout = async () => {
@@ -18,6 +20,7 @@ function Navbar(props) {
         // for only Portis:
         const w3mProvider = await props.web3modal.connectTo("portis");
         const provider = new ethers.providers.Web3Provider(w3mProvider);
+        actions.setProvider(provider);
         setLoggedIn(true);
     }
 

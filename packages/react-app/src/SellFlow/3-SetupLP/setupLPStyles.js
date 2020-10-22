@@ -62,7 +62,7 @@ const styles = createStyles({
         display: "flex",
         flexDirection: "column",
         height: "100%",
-        width: "25%",
+        width: "30%",
         margin: "auto",
         justifyContent: "flex-start",
         alignItems: "start"
