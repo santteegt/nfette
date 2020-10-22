@@ -305,27 +305,21 @@ contract NFTMarketTemplate is INFTMarket, /*ERC20Capped,*/ERC20, ERC165/*, Ownab
       * @notice withdraw your stake.
       * @dev    This function will be blocked after the market has closed.
       */
-    function withdraw(uint256 _tokens) external override {
+    function withdraw(uint256 _tokens) external override openMarket() {
         address sender = msg.sender;  // TODO: update to use Meta-Tx
-        if (_openMarket) {
-            // uint256 reward = getSellAmount(_tokens);
-            uint256 reward = _stakes[sender];
+        // uint256 reward = getSellAmount(_tokens);
+        uint256 reward = _stakes[sender];
 
-            require(_shares[sender] >= _tokens, "NFTMarketTemplate: Cannot sell more tokens than owned");
-            // require(this.stakeBalanceOf(sender) >= _tokens, "NFTMarketTemplate: Cannot withdraw more tokens than owned");
+        require(_shares[sender] >= _tokens, "NFTMarketTemplate: Cannot sell more tokens than owned");
+        // require(this.stakeBalanceOf(sender) >= _tokens, "NFTMarketTemplate: Cannot withdraw more tokens than owned");
 
-            // TODO: withdraw collateral from DeFi position
+        // TODO: withdraw collateral from DeFi position
 
-            require(_stakeToken.transfer(sender, reward), "NFTMarketTemplate: of collateral failed");
+        require(_stakeToken.transfer(sender, reward), "NFTMarketTemplate: of collateral failed");
 
-            _stakes[sender] = _stakes[sender].sub(reward);
-            _shares[sender] = _shares[sender].sub(_tokens);
-            _burn(msg.sender, _tokens);
-        } else {
-            uint256 toWithdraw = _stakes[sender];
-            _stakes[sender] = 0;
-            require(_stakeToken.transfer(sender, toWithdraw), "NFTMarketTemplate: of collateral failed");
-        }
+        _stakes[sender] = _stakes[sender].sub(reward);
+        _shares[sender] = _shares[sender].sub(_tokens);
+        _burn(msg.sender, _tokens);
     }
 
     function getBuyCost(uint256 _tokens) public override view returns(uint256) {
