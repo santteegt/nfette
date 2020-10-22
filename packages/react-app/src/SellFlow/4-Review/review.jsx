@@ -9,7 +9,7 @@ import styles from "./reviewStyles";
      const { nftDetails, shareDetails, curveShape, riskProfile} = state;
      const {previous, next} = navigation;
      const handleNext = ()=> {
-        actions.createMarket(state);
+        // actions.createMarket(state);
         next()
      }
     return (
@@ -21,7 +21,7 @@ import styles from "./reviewStyles";
             <div className={classes.mainContainer}>
                 <div className={classes.leftBox}>
                     <div className={classes.leftItem}>Name:</div>
-                    <div className={classes.leftItem}>Curve Address: </div>
+                    <div className={classes.leftItem}>NFt URL: </div>
                     <div className={classes.leftItem}>Max Supply: </div>
                     <div className={classes.leftItem}>Collateral Type: </div>
                     <div className={classes.leftItem}>Curve Type: </div>
@@ -32,19 +32,19 @@ import styles from "./reviewStyles";
                 </div>
                 <div className={classes.rightBox}>
                     <div className={classes.rightItem}> {nftDetails.name} </div>
-                    <div className={classes.rightItem}> {nftDetails.address} </div>
+                    <div className={classes.rightItem}> {nftDetails.url} </div>
                     <div className={classes.rightItem}>100</div>
                     <div className={classes.rightItem}>USDC</div>
                     <div className={classes.rightItem}>{curveShape}</div>
                     <div className={classes.rightItem}>{shareDetails.name}</div>
-                    <div className={classes.rightItem}>{shareDetails.name}</div>
+                    <div className={classes.rightItem}>{shareDetails.symbol}</div>
                     <div className={classes.rightItem}>⎕ ⎕ ⎕ ⎕ </div>
                     <div className={classes.rightItem}>{riskProfile}</div>
                 </div>
             </div>
             <div className={classes.btnBar}>
                 <button onClick={()=> previous()}  className={`${classes.btnLeft} button`}>Back</button>
-                <button onClick={handleNext}  className={`${classes.btnRight} button`}>Next</button>
+                <button onClick={handleNext}  className={`${classes.btnRight} button`}>Create Market</button>
             </div>
         </div>
     )
