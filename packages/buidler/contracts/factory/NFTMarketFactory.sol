@@ -3,7 +3,8 @@ pragma solidity >=0.6.0 <0.7.0;
 import "@openzeppelin/contracts/math/SafeMath.sol";
 
 import "./Deployer.sol";
-import "../interfaces/INFTMarketTemplate.sol";
+import "../bc/Curve.sol";
+import "../interfaces/INFTMarket.sol";
 
 import "@nomiclabs/buidler/console.sol";
 
@@ -22,6 +23,7 @@ contract NFTMarketFactory is Deployer {
     using SafeMath for uint256;
 
     address private _template;
+    // Curve private _activeCurve;
     uint256 private nftMarketCounter = 1;
 
     event NFTMarketCreated(address indexed templateAddress, address indexed marketAddress, address indexed owner);
@@ -34,12 +36,14 @@ contract NFTMarketFactory is Deployer {
         string symbol,
         address indexed registeredBy,
         uint256 cap,
+        address bondingCurveAddr,
         address stakeTokenAddress
     );
 
     constructor(address template) public {
         require(template != address(0), 'NFTMarketFactory: Invalid contract template');
         _template = template;
+        // _activeCurve = new Curve();
     }
 
     function createMarket(
@@ -48,7 +52,9 @@ contract NFTMarketFactory is Deployer {
         string memory name,
         string memory symbol,
         uint256 cap,
+        uint256 initialBidPrice,
         address bondingCurveAddr,
+        uint256[3] memory _curveParameters,
         address stakeTokenAddress) public returns (address market) {
 
             address owner = msg.sender; // TODO: update to use Meta-Tx
@@ -57,7 +63,7 @@ contract NFTMarketFactory is Deployer {
 
             require(market != address(0), 'NFTMarketFactory: Failed to perform minimal deploy of a new subscription');
 
-            INFTMarketTemplate marketInstance = INFTMarketTemplate(market);
+            INFTMarket marketInstance = INFTMarket(market);
             require(
                 marketInstance.initialize(
                     parentToken,
@@ -66,7 +72,10 @@ contract NFTMarketFactory is Deployer {
                     symbol,
                     owner,
                     cap,
+                    initialBidPrice,
                     bondingCurveAddr,
+                    // _activeCurve,
+                    _curveParameters,
                     stakeTokenAddress), 'NFTMarketFactory: Unable to initialize market');
             emit NFTMarketCreated(address(_template), market, owner);
             emit NFTMarketRegistered(
@@ -77,6 +86,7 @@ contract NFTMarketFactory is Deployer {
                 symbol,
                 owner,
                 cap,
+                bondingCurveAddr,
                 stakeTokenAddress);
             nftMarketCounter.add(1);
     }
