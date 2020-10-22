@@ -7,13 +7,12 @@ import Web3Modal from "web3modal";
 import Portis from "@portis/web3";
 
 // must register dapp to get portis ID
-const portisID = "";
 
 const providerOptions = {
   portis: {
     package: Portis,
     options: {
-      id: portisID, 
+      id: 'f5c8dbd5-f553-4641-943e-9223c9e65a0a', 
     },
   },
 };

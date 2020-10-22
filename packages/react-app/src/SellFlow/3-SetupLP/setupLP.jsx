@@ -56,18 +56,7 @@ import styles from "./setupLPStyles";
                         Short explanation her about the pool
                         </p>
                     </div>
-                    <div className={classes.liquidityPoolBox}>
-                        <h3 className={classes.riskScale}>High Risk</h3>
-                        <input className={classes.radio} name="curveOption" value="highRisk" checked={state.riskProfile === "highRisk"} onChange={(e)=> actions.setRiskProfile(e.target.value)} type="radio" label="Select" />
-                        <div className={classes.percentage}>00%</div>
-                        <div className={classes.iconBox}>
-                            <AaveText className={classes.svg1} />
-                            <AaveGhost className={classes.svg2} />
-                        </div>
-                        <p className={classes.description}>
-                        Short explanation her about the pool
-                        </p>
-                    </div>
+                    
                 </div>
             </div>
             <div className={classes.btnBar}>
