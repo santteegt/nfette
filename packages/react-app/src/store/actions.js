@@ -1,28 +1,26 @@
 import types from './types';
 
 export const useActions = (state, dispatch)=> ({
-    clearNewNFTDetails: ()=> {
-        dispatch({type: types.createNFT.PREVIOUS})
+    setNFTName: (data)=> {
+        dispatch({type: types.createNFT.SET_NAME, payload: data})
     },
-    setNewNFTDetails: (data)=> {
-        dispatch({type: types.createNFT.PROCEED, payload: data})
+    setNFTSymbol: (data)=> {
+        dispatch({type: types.createNFT.SET_SYMBOL, payload: data})
     },
-    setImportedNFTDetails: (data)=> {
-        dispatch({type: types.importNFT.PROCEED, payload: data})
+    setNFTUrl: (data)=> {
+        dispatch({type: types.createNFT.SET_URL, payload: data})
     },
-    clearImportedNFTDetails: ()=> {
-        dispatch({type: types.importNFT.PREVIOUS})
+    setCollateralType: (data)=> {
+        dispatch({type: types.collateralAndPrice.SET_COLLATERAL, payload: data })
+    },
+    setInitialPrice: (data)=> {
+        dispatch({type: types.collateralAndPrice.SET_PRICE, payload: data })
     },
     setCurve: (data)=> {
-        dispatch({type: types.chooseCurve.PROCEED, payload: data})
-    },
-    clearCurve: ()=> {
-        dispatch({type: types.chooseCurve.PREVIOUS})
+        dispatch({type: types.curve.SET_CURVE, payload: data})
     },
     setRiskProfile: (data)=> {
-        dispatch({type: types.riskProfile.PROCEED, payload: data})
-    },
-    clearRiskProfile: ()=> {
-        dispatch({type: types.riskProfile.PREVIOUS})
+        dispatch({type: types.riskProfile.SET_RISK, payload: data})
     }
+
 })

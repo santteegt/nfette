@@ -5,6 +5,7 @@ import LandingPage from "../components/landingPage/landingPage";
 import CreateNFT from "./0-CreateNFT/createNFT";
 import ChooseCurve from "./2-ChooseCurve/chooseCurve";
 import ImportNFT from "./1-ImportNFT/importNFT";
+import SelectPrice from "./1b-SelectPrice/selectPrice";
 import SetupLP from "./3-SetupLP/setupLP";
 import Review from "./4-Review/review";
 import Final from "./5-Final/final";
@@ -24,7 +25,7 @@ const transitionStyles = {
 const steps = [
   { id: "landingPage"},
   { id: "createNFT"},
-  { id: "importNFT" },
+  { id: "selectPrice" },
   { id: "chooseCurve" },
   { id: "setupLP" },
   { id: "review" },
@@ -71,7 +72,7 @@ const MultiStepSellFlow = () => {
         )}
       </Transition>
       <Transition
-        in={id === "importNFT"}
+        in={id === "selectPrice"}
         timeout={duration}
         unmountOnExit
       >
@@ -82,7 +83,7 @@ const MultiStepSellFlow = () => {
               ...transitionStyles[state],
             }}
           >
-            <ImportNFT navigation={navigation} />
+            <SelectPrice navigation={navigation} />
           </div>
         )}
       </Transition>

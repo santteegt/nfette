@@ -1,39 +1,25 @@
-import React, {useState, useContext} from 'react';
+import React, { useContext} from 'react';
 import {Store} from "../../store/store";
 import styles from "./createNFTStyles";
 import {withStyles} from "@material-ui/core/styles";
 
-const initialState = {
-    name: "",
-    symbol: "",
-    url: ""
-}
-
 
 function CreateNFT(props) {
     const {state, actions} = useContext(Store);
-    const [input, setInput] = useState(initialState);
     const {classes, navigation} = props;
     const {next, go} = navigation;
 
-    const handleChange = (e) => {
-        setInput({...input, [e.target.name]: e.target.value});
-    }
-
     const handlePrevious = (e)=> {
         e.preventDefault();
-        setInput(initialState);
         go("landingPage");
     }
 
     const handleNext = (e) => {
         e.preventDefault();
-        actions.setNewNFTDetails(input)
-        setInput(initialState);
         next();
     }
     
-    const {name, symbol, url} = input;
+    const {name, symbol, url} = state.nftDetails;
 
     return (
         <div className={classes.root}>
@@ -45,13 +31,13 @@ function CreateNFT(props) {
             <form className={classes.form}>
 
                 <label className={classes.label}  for="name">Name for NFT</label>
-                <input onChange={handleChange} value={name} className={classes.input} type="text" name="name" placeholder="example: MyCoolNFT"/>
+                <input onChange={(e)=> actions.setNFTName(e.target.value)} value={name} className={classes.input} type="text" name="name" placeholder="example: MyCoolNFT"/>
 
                 <label className={classes.label} for="symbol">Symbol for NFT</label>
-                <input onChange={handleChange} value={symbol} className={classes.input} type="text" name="symbol" placeholder="MYCT"/>
+                <input onChange={(e)=> actions.setNFTSymbol(e.target.value)} value={symbol} className={classes.input} type="text" name="symbol" placeholder="MYCT"/>
 
                 <label  className={classes.label}  for="url">URL</label>
-                <input onChange={handleChange} value={url} className={classes.input} type="text" name="url" placeholder="URL"/>
+                <input onChange={(e)=> actions.setNFTUrl(e.target.value)} value={url} className={classes.input} type="text" name="url" placeholder="URL"/>
 
                 <div className={classes.btnBar}>
                     <button onClick={handlePrevious} className={classes.btnLeft}  >Back</button>

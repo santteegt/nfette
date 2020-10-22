@@ -1,19 +1,18 @@
 const types = {
     createNFT: {
-        PROCEED: "CREATE_NFT_PROCEED",
-        PREVIOUS: "CREATE_NFT_PREVIOUS",
+        SET_NAME: "CREATE_NFT_SET_NAME",
+        SET_SYMBOL: "CREATE_NFT_SET_SYMBOL",
+        SET_URL: "CREATE_NFT_SET_URL"
     },
-    importNFT: {
-        PROCEED: "IMPORT_NFT_PROCEED",
-        PREVIOUS: "IMPORT_NFT_PREVIOUS"
+    collateralAndPrice: {
+        SET_COLLATERAL: "COLLATERAL_AND_PRICE_SET_COLLATERAL",
+        SET_PRICE: "COLLATERAL_AND_PRICE_SET_PRICE"
     },
-    chooseCurve: {
-        PROCEED: "CHOOSE_CURVE_PROCEED",
-        PREVIOUS: "CHOOSE_CURVE_PREVIOUS"
+    curve: {
+        SET_CURVE: "CURVE_SET_CURVE",
     },
     riskProfile: {
-        PROCEED: "RISK_PROFILE_PROCEED",
-        PREVIOUS: "RISK_PROFILE_PREVIOUS"
+        SET_RISK: "RISK_PROFILE_SET_RISK"
     },
 }
 
