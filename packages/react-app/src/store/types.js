@@ -4,6 +4,10 @@ const types = {
         SET_SYMBOL: "CREATE_NFT_SET_SYMBOL",
         SET_URL: "CREATE_NFT_SET_URL"
     },
+    token: {
+        SET_NAME: "TOKEN_SET_NAME",
+        SET_SYMBOL: "TOKEN_SET_SYMBOL"
+    },
     collateralAndPrice: {
         SET_COLLATERAL: "COLLATERAL_AND_PRICE_SET_COLLATERAL",
         SET_PRICE: "COLLATERAL_AND_PRICE_SET_PRICE"
