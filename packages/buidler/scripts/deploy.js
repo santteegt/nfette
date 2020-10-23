@@ -24,15 +24,21 @@ async function main() {
   console.log(await owner.getChainId())
   // process.exit(0)
 
-
+  const chainId = await owner.getChainId()
 
   // #######################################################
   // ################# CREATING an ERC20 Mock ##############
   // #######################################################
 
-  const StakeToken = await ethers.getContractFactory("ERC20Mock")
-  const stakeToken = await StakeToken.deploy("Stake token", "STAKE")
-  console.log('Stake token', stakeToken.address)
+  let stakeTokenAddr;
+  if (chainId == 42) {
+    stakeTokenAddr = '0xe22da380ee6B445bb8273C81944ADEB6E8450422'
+  } else {
+    const StakeToken = await ethers.getContractFactory("ERC20Mock")
+    const stakeToken = await StakeToken.deploy("Stake token", "STAKE")
+    stakeTokenAddr = stakeToken.address
+  }
+  console.log('Stake token', stakeTokenAddr)
 
   // ################################################
   // ################# CREATING an NFT ##############
@@ -69,10 +75,11 @@ async function main() {
       ethers.utils.parseUnits("1", 1)
   ]
   const NFTMarketTemplate = await ethers.getContractFactory("NFTMarketTemplate")
+  // const NFTMarketTemplate = await ethers.getContractFactory("NFTMarketTemplateV2")
   // console.log(5.5, 'got template')
   const nftMarketTemplate = await NFTMarketTemplate.deploy(parentToken, parentTokenId, 
       `${nftName}_FT`, `$${nftSymbol}_SHARES`, owner._address, cap, 
-      defaultInitialBidPrice, bondingCurve.address, defaultCurveParameters, stakeToken.address)
+      defaultInitialBidPrice, bondingCurve.address, defaultCurveParameters, stakeTokenAddr)
   console.log('NFTMarketTemplate', nftMarketTemplate.address)
 
   // #############################################################
@@ -81,7 +88,7 @@ async function main() {
   const NFTMarketFactory = await ethers.getContractFactory("NFTMarketFactory")
   const nftMarketFactory = await NFTMarketFactory.deploy(nftMarketTemplate.address)
   console.log('NFTMarketFactory', nftMarketFactory.address)
-  
+
 }
 
 

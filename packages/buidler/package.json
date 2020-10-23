@@ -31,6 +31,7 @@
     "accounts": "buidler accounts",
     "balance": "buidler balance",
     "send": "buidler send",
-    "generate": "buidler generate"
+    "generate": "buidler generate",
+    "test-aave": "BUIDLER_NETWORK=kovan node scripts/testAave.js"
   }
 }
