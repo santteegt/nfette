@@ -4,6 +4,8 @@
  */
 export const MAINNET_ID = 1;
 export const RINKEBY_ID = 4;
+export const LOCAL_ID = -1;
+export const KOVAN_ID = 42;
 
 export default {
   [MAINNET_ID]: {
@@ -35,4 +37,18 @@ export default {
       DAI: "0xc3dbf84Abb494ce5199D5d4D815b10EC29529ff8",
     },
   },
+  [LOCAL_ID]: {
+    'USDC': '0x7c2C195CD6D34B8F845992d380aADB2730bB9C6F',
+    'MyNFT': '0x8858eeB3DfffA017D4BCE9801D340D36Cf895CCf',
+    'Curve': '0xf4e77E5Da47AC3125140c470c71cBca77B5c638c',
+    'NFTMarketTemplate': '0xf784709d2317D872237C4bC22f867d1BAe2913AB',
+    'NFTMarketFactory': '0x3619DbE27d7c1e7E91aA738697Ae7Bc5FC3eACA5'
+  },
+  [KOVAN_ID]: {
+    'USDC': '0xe22da380ee6B445bb8273C81944ADEB6E8450422',
+    'MyNFT': '0xA470d5aB139d87B423e45186CE6eEa565AA43372',
+    'Curve': '0x36D0a27Df5A455bD67C03D3c7f102c0F5238342a',
+    'NFTMarketTemplate': '0x3F03a541584856031CA287a4f1F596BB0234d624',
+    'NFTMarketFactory': '0xc4264861dbB055a09Aa20E39aCB7722a6C9591aF'
+  }
 };

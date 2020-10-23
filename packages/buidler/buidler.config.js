@@ -65,6 +65,12 @@ module.exports = {
         mnemonic: mnemonic(),
       },
     },
+    kovan: {
+      url: "https://kovan.infura.io/v3/c954231486fa42ccb6d132b406483d14",//<---- YOUR INFURA ID! (or it won't work)
+      accounts: {
+        mnemonic: mnemonic(),
+      },
+    },
     xdai: {
       url: 'https://dai.poa.network',
       gasPrice: 1000000000,

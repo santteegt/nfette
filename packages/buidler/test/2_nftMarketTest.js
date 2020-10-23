@@ -6,6 +6,10 @@ const { BigNumber } = require("ethers");
 const { deployContract, provider } = waffle;
 // use(solidity);
 
+// console.log('provider', provider)
+
+// process.exit(0)
+
 nftMarketABI = require('../artifacts/NFTMarketTemplate.json').abi
 
 describe("NFTMarket test", async () => {
@@ -216,56 +220,5 @@ describe("NFTMarket test", async () => {
         expect(currentTokenBalance.sub(previousTokenBalance)).to.equal(stake)
 
     })
-
-
-
-
-    // it("Should deploy a new NFTMarket from template", async () => {
-    //     // console.log('=== NEW MARKET')
-
-    //     // #############################################################
-    //     // ################# CREATING a new NFTMarket ##################
-    //     // #############################################################
-    //     const nftMarketName = `${nftName}_FT`
-    //     const nftMarketSymbol = `$${nftSymbol}_SHARES`
-
-    //     const tx = await nftMarketFactory.createMarket(
-    //         parentToken, parentTokenId, nftMarketName, nftMarketSymbol, cap, 
-    //         defaultInitialBidPrice, bondingCurve.address, defaultCurveParameters, stakeToken.address)
-
-    //     // console.log(nftMarketFactory.filters)
-    //     // console.log(tx)
-
-    //     // ################# Checking NFTMarketCreated event ##################
-    //     let eventSignature = 'NFTMarketCreated(address,address,address)'
-    //     let events = await nftMarketFactory.queryFilter(eventSignature, tx.blockNumber)
-    //     const newNFTMarketAddr = events[0].args['marketAddress']
-    //     // console.log('New market address', newNFTMarketAddr)
-    //     expect(events[0].args['templateAddress']).to.equal(nftMarketTemplate.address)
-    //     expect(events[0].args['owner']).to.equal(owner.address)
-
-    //     // ################# Checking NFTMarketRegistered event ##################
-    //     eventSignature = 'NFTMarketRegistered(address,address,uint256,string,string,address,uint256,address,address)'
-    //     events = await nftMarketFactory.queryFilter(eventSignature, tx.blockNumber)
-        
-    //     expect(events[0].args['marketAddress']).to.equal(newNFTMarketAddr)
-    //     expect(events[0].args['parentToken']).to.equal(parentToken)
-    //     expect(events[0].args['parentTokenId']).to.equal(parentTokenId)
-    //     expect(events[0].args['name']).to.equal(nftMarketName)
-    //     expect(events[0].args['symbol']).to.equal(nftMarketSymbol)
-    //     expect(events[0].args['registeredBy']).to.equal(owner.address)
-    //     expect(events[0].args['cap']).to.equal(cap)
-    //     expect(events[0].args['bondingCurveAddr']).to.equal(bondingCurve.address)
-    //     expect(events[0].args['stakeTokenAddress']).to.equal(stakeToken.address)
-
-    //     // ################# Checking NFTMarket properties ##################
-    //     const nftMarketContract = new ethers.Contract(newNFTMarketAddr, nftMarketABI, provider)
-    //     expect(await nftMarketContract.isInitialized()).to.equal(true)
-    //     expect(await nftMarketContract.minter()).to.equal(owner.address)
-   
-    //     // expect(tx).to.emit(nftMarketFactory, "NFTMarketCreated").withArgs(nftMarketTemplate.address, newNFTMarketAddr, owner.address)
-    //     // tx.to.emit(nftMarketFactory, "NFTMarketRegistered").withArgs()
-
-    // })
 
 })

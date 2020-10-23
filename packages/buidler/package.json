@@ -26,9 +26,11 @@
     "test": "buidler test --network buidlerevm",
     "compile": "buidler compile",
     "deploy": "buidler run scripts/deploy.js && buidler run scripts/publish.js",
+    "deploy-kovan": "buidler run --network kovan scripts/deploy.js",
     "watch": "node scripts/watch.js",
     "accounts": "buidler accounts",
     "balance": "buidler balance",
-    "send": "buidler send"
+    "send": "buidler send",
+    "generate": "buidler generate"
   }
 }
